@@ -89,11 +89,16 @@ async def update_xhs_note(note_item: Dict):
     print("xhs note:", local_db_item)
     if config.IS_SAVED_DATABASED:
         if not await XHSNote.filter(note_id=note_id).first():
-            local_db_item["add_ts"] = utils.get_current_timestamp()
-            note_pydantic = pydantic_model_creator(XHSNote, name="XHSPydanticCreate", exclude=('id',))
-            note_data = note_pydantic(**local_db_item)
-            note_pydantic.validate(note_data)
-            await XHSNote.create(**note_data.dict())
+            try:
+                local_db_item["add_ts"] = utils.get_current_timestamp()
+                note_pydantic = pydantic_model_creator(XHSNote, name="XHSPydanticCreate", exclude=('id',))
+                note_data = note_pydantic(**local_db_item)
+                note_pydantic.validate(note_data)
+                await XHSNote.create(**note_data.dict())
+            except Exception as e:
+                # 处理错误或者忽略
+                pass
+
         else:
             note_pydantic = pydantic_model_creator(XHSNote, name="XHSPydanticUpdate", exclude=('id', 'add_ts'))
             note_data = note_pydantic(**local_db_item)

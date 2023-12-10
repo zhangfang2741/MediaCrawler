@@ -1,6 +1,6 @@
 # 基础配置
 PLATFORM = "xhs"
-KEYWORDS = "买蜂蜜"
+KEYWORDS = "哪里能买到真蜂蜜"
 LOGIN_TYPE = "qrcode"  # qrcode or phone or cookie
 COOKIES = ""
 CRAWLER_TYPE = "search"

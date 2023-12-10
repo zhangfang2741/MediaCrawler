@@ -155,9 +155,15 @@ class XiaoHongShuCrawler(AbstractCrawler):
         """Get note comments"""
         async with semaphore:
             utils.logger.info(f"Begin get note id comments {note_id}")
-            all_comments = await self.xhs_client.get_note_all_comments(note_id=note_id, crawl_interval=random.random())
-            for comment in all_comments:
-                await xhs_model.update_xhs_note_comment(note_id=note_id, comment_item=comment)
+            try:
+                all_comments = await self.xhs_client.get_note_all_comments(note_id=note_id, crawl_interval=random.random())
+                for comment in all_comments:
+                    await xhs_model.update_xhs_note_comment(note_id=note_id, comment_item=comment)
+            except DataFetchError as ex:
+                pass
+
+
+
 
     @staticmethod
     def format_proxy_info(ip_proxy_info: IpInfoModel) -> Tuple[Optional[Dict], Optional[Dict]]:
