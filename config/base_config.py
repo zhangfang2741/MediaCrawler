@@ -1,15 +1,15 @@
 # 基础配置
 PLATFORM = "xhs"
-KEYWORDS = "python,golang"
+KEYWORDS = "买蜂蜜"
 LOGIN_TYPE = "qrcode"  # qrcode or phone or cookie
 COOKIES = ""
 CRAWLER_TYPE = "search"
 
 # 是否开启 IP 代理
-ENABLE_IP_PROXY = False
+ENABLE_IP_PROXY = True
 
 # 代理IP池数量
-IP_PROXY_POOL_COUNT = 2
+IP_PROXY_POOL_COUNT = 10
 
 # 重试时间
 RETRY_INTERVAL = 60 * 30  # 30 minutes

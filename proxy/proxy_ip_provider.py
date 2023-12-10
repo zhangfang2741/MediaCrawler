@@ -140,9 +140,9 @@ class JiSuHttpProxy(ProxyProvider):
 
 
 IpProxy = JiSuHttpProxy(
-    key=os.getenv("jisu_key", ""),  # 通过环境变量的方式获取极速HTTPIP提取key值
-    crypto=os.getenv("jisu_crypto", ""),  # 通过环境变量的方式获取极速HTTPIP提取加密签名
-    time_validity_period=30  # 30分钟（最长时效）
+    key=os.getenv("jisu_key", "5shvn9tiwz0zs40r"),  # 通过环境变量的方式获取极速HTTPIP提取key值
+    crypto=os.getenv("jisu_crypto", "1ecc98d7e2b3c53c9d6601ae68105eeb"),  # 通过环境变量的方式获取极速HTTPIP提取加密签名
+    time_validity_period=10  # 30分钟（最长时效）
 )
 
 if __name__ == '__main__':
